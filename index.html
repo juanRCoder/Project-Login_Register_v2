@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="icon" href="images/registro.ico" type="image/x-icon"/>
+    <script src="https://kit.fontawesome.com/b5e881eaf3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Register&Login</title>
+</head>
+<body>
+    <main>
+        <h1>Register & Login</h1>
+        <div class="options_container">
+            <button class="buttonRegister">Register</button>
+            <button class="buttonLogin">Login</button>
+        </div>
+        <img class="logo_project" src="https://neverland.game-ark.com/images/banner3.jpg">
+        <span class="modal">
+            <div class="modalFormsRe">
+                <h1 class="modalFormstitle">Register</h1>
+                <div class="redes">
+                    <span>
+                        <div class="redes_box">
+                            <img class="redes_logo" src="images/google.png" alt="google.png" title="google"/>
+                            <p>Google</p>
+                        </div>
+                        <div class="redes_box">
+                            <img class="redes_logo" src="images/gorjeo.png" alt="gorjeo.png" title="twitter"/>
+                            <p>Twitter</p>
+                        </div>
+                        <div class="redes_box">
+                            <img class="redes_logo" src="images/instagram.png" alt="instagram.png" title="instagram"/>
+                            <p>Instagram</p>
+                        </div>
+                    </span>
+                    <p>Sign up with your networks</p>
+                </div>
+                <form  class="formRegister">
+                    <div class="box_input">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="box_input">
+                        <label for="gmail">Gmail:</label>
+                        <input type="email" id="gmail" required>
+                    </div>
+                    <div class="box_input">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <input type="submit" value="Register">
+                </form>
+                <button class="modalExit"><i class="fa-solid fa-xmark" style="color: #607D8B;"></i></button>
+                <p class="blank_">Already registered? Log in <a style="cursor:pointer; color:#1200bf; text-decoration: underline;">here.</a></p>
+            </div>
+            <div class="modalFormsLo">
+                <h1 class="modalFormstitle">Login</h1>
+                <div class="redes">
+                    <span>
+                        <div class="redes_box">
+                            <img class="redes_logo" src="images/google.png" alt="google.png" title="google"/>
+                            <p>Google</p>
+                        </div>
+                        <div class="redes_box">
+                            <img class="redes_logo" src="images/gorjeo.png" alt="gorjeo.png" title="twitter"/>
+                            <p>Twitter</p>
+                        </div>
+                        <div class="redes_box">
+                            <img class="redes_logo" src="images/instagram.png" alt="instagram.png" title="instagram"/>
+                            <p>Instagram</p>
+                        </div>
+                    </span>
+                    <p>Sign up with your networks</p>
+                </div>
+                <form  class="formRegister formLo">
+                    <div class="box_input">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="box_input">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <input type="submit" value="Login">
+                </form>
+                <button class="modalExit"><i class="fa-solid fa-xmark" style="color: #607D8B;"></i></button>
+                <p class="blank_lo">Not registered yet? Register <a style="cursor:pointer; color:#1200bf; text-decoration: underline;">here.</a></p>
+            </div>
+        </span>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
