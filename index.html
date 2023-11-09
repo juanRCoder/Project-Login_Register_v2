@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="styles.css"/>
-    <link rel="icon" href="images/registro.ico" type="image/x-icon"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="icon" href="images/registro.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/b5e881eaf3.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Register&Login</title>
 </head>
 <body>
     <main>
-        <h1>Register & Login</h1>
+        <h1>Register&Login</h1>
         <div class="options_container">
             <button class="buttonRegister">Register</button>
             <button class="buttonLogin">Login</button>
+        </div>
+        <div class="options_container_login" style="display: none;">
+            <div></div>
+            <p></p>
+            <button id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i></button>
         </div>
         <img class="logo_project" src="https://neverland.game-ark.com/images/banner3.jpg">
         <span class="modal">
@@ -37,18 +43,18 @@
                     </span>
                     <p>Sign up with your networks</p>
                 </div>
-                <form  class="formRegister">
+                <form id="formRegister" class="formRegister" method="POST" action="/register">
                     <div class="box_input">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="name" autocomplete="username" required>
                     </div>
                     <div class="box_input">
                         <label for="gmail">Gmail:</label>
-                        <input type="email" id="gmail" required>
+                        <input type="email" id="gmail" name="gmail"  autocomplete="email" required>
                     </div>
                     <div class="box_input">
                         <label for="password">Password:</label>
-                        <input type="password" id="password" required>
+                        <input type="password" id="password" name="password" autocomplete="current-password" required>
                     </div>
                     <input type="submit" value="Register">
                 </form>
@@ -77,11 +83,11 @@
                 <form  class="formRegister formLo">
                     <div class="box_input">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="names" name="name" autocomplete="username" required>
                     </div>
                     <div class="box_input">
                         <label for="password">Password:</label>
-                        <input type="password" id="password" required>
+                        <input type="password" id="passwords" name="password" autocomplete="current-password" required>
                     </div>
                     <input type="submit" value="Login">
                 </form>
@@ -89,7 +95,53 @@
                 <p class="blank_lo">Not registered yet? Register <a style="cursor:pointer; color:#1200bf; text-decoration: underline;">here.</a></p>
             </div>
         </span>
+        <span class="message">
+            <p></p>
+        </span>
     </main>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
+    <script>
+    $(document).ready(function() {
+        const formRegister = $('#formRegister');
+        const message = $('.message');
+
+        // Form-Register
+        formRegister.submit((event) => {
+            event.preventDefault();
+
+            const userData = {
+                name: $('#name').val(),
+                gmail: $('#gmail').val(),
+                password: $('#password').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/register',
+                data: JSON.stringify(userData),
+                contentType: 'application/json',
+            }).done(() => {
+                window.location.href = '/register';
+            }).fail(() => {
+                showMessage('Error de registro');
+            });
+        });
+
+        // PAGINA DE LOGEADO O REGISTRADO
+        if (window.location.pathname === '/register') {
+
+            $('.options_container_login').css('display', 'flex');
+            $('#logoutButton').on('click', () => window.location.href = '/');
+            showMessage('Registrado', '#67bd41');
+        }
+
+        function showMessage(text, backgroundColor = '#ff0000') {
+            message.css('background-color', backgroundColor);
+            message.find('p').text(text);
+            setTimeout(() =>  message.removeClass('message_change'), 2000);
+            message.addClass('message_change');
+        }
+    });
+    </script>
 </body>
 </html>
