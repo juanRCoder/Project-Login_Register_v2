@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/style.css"> -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/registro.ico" type="image/x-icon">
+    <link rel="stylesheet" href="front-end/styles/style.css">
+    <link rel="icon" href="front-end/styles/imagenes/registro.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/b5e881eaf3.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Register&Login</title>
@@ -25,25 +24,29 @@
         <img class="logo_project" src="https://images.freeimages.com/images/large-previews/01a/technology-background-1632715.jpg">
         <span class="modal">
             <div class="modalFormsRe">
+
                 <h1 class="modalFormstitle">Register</h1>
+
                 <div class="redes">
                     <span>
                         <div class="redes_box">
-                            <img class="redes_logo" src="images/google.png" alt="google.png" title="google"/>
+                            <img class="redes_logo" src="front-end/styles/images/google.png" alt="google.png" title="google"/>
                             <p>Google</p>
                         </div>
                         <div class="redes_box">
-                            <img class="redes_logo" src="images/gorjeo.png" alt="gorjeo.png" title="twitter"/>
+                            <img class="redes_logo" src="front-end/styles/images/gorjeo.png" alt="gorjeo.png" title="twitter"/>
                             <p>Twitter</p>
                         </div>
                         <div class="redes_box">
-                            <img class="redes_logo" src="images/instagram.png" alt="instagram.png" title="instagram"/>
+                            <img class="redes_logo" src="front-end/styles/images/instagram.png" alt="instagram.png" title="instagram"/>
                             <p>Instagram</p>
                         </div>
                     </span>
                     <p>Sign up with your networks</p>
                 </div>
-                <form id="formRegister" class="formRegister" method="POST" action="/register">
+
+
+                <form id="formRegister" class="formRegister">
                     <div class="box_input">
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name" autocomplete="username" required>
@@ -56,30 +59,38 @@
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" autocomplete="current-password" required>
                     </div>
-                    <input type="submit" value="Register">
+                    <input type="submit" class="btnForm" value="Register">
                 </form>
+
+
                 <button class="modalExit"><i class="fa-solid fa-xmark" style="color: #607D8B;"></i></button>
                 <p class="blank_">Already registered? Log in <a style="cursor:pointer; color:#1200bf; text-decoration: underline;">here.</a></p>
+            
+            
             </div>
             <div class="modalFormsLo">
+
                 <h1 class="modalFormstitle">Login</h1>
+
                 <div class="redes">
                     <span>
                         <div class="redes_box">
-                            <img class="redes_logo" src="images/google.png" alt="google.png" title="google"/>
+                            <img class="redes_logo" src="front-end/styles/images/google.png" alt="google.png" title="google"/>
                             <p>Google</p>
                         </div>
                         <div class="redes_box">
-                            <img class="redes_logo" src="images/gorjeo.png" alt="gorjeo.png" title="twitter"/>
+                            <img class="redes_logo" src="front-end/styles/images/gorjeo.png" alt="gorjeo.png" title="twitter"/>
                             <p>Twitter</p>
                         </div>
                         <div class="redes_box">
-                            <img class="redes_logo" src="images/instagram.png" alt="instagram.png" title="instagram"/>
+                            <img class="redes_logo" src="front-end/styles/images/instagram.png" alt="instagram.png" title="instagram"/>
                             <p>Instagram</p>
                         </div>
                     </span>
                     <p>Sign up with your networks</p>
                 </div>
+
+
                 <form  class="formRegister formLo">
                     <div class="box_input">
                         <label for="name">Name:</label>
@@ -89,59 +100,22 @@
                         <label for="password">Password:</label>
                         <input type="password" id="passwords" name="password" autocomplete="current-password" required>
                     </div>
-                    <input type="submit" value="Login">
+                    <input type="submit" class="btnForm" value="Login">
                 </form>
+
+
                 <button class="modalExit"><i class="fa-solid fa-xmark" style="color: #607D8B;"></i></button>
                 <p class="blank_lo">Not registered yet? Register <a style="cursor:pointer; color:#1200bf; text-decoration: underline;">here.</a></p>
+            
+            
             </div>
         </span>
         <span class="message">
             <p></p>
         </span>
     </main>
-    <script src="./script.js"></script>
-    <script>
-    $(document).ready(function() {
-        const formRegister = $('#formRegister');
-        const message = $('.message');
-
-        // Form-Register
-        formRegister.submit((event) => {
-            event.preventDefault();
-
-            const userData = {
-                name: $('#name').val(),
-                gmail: $('#gmail').val(),
-                password: $('#password').val()
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: '/register',
-                data: JSON.stringify(userData),
-                contentType: 'application/json',
-            }).done(() => {
-                window.location.href = '/register';
-            }).fail(() => {
-                showMessage('Error de registro');
-            });
-        });
-
-        // PAGINA DE LOGEADO O REGISTRADO
-        if (window.location.pathname === '/register') {
-
-            $('.options_container_login').css('display', 'flex');
-            $('#logoutButton').on('click', () => window.location.href = '/');
-            showMessage('Registrado', '#67bd41');
-        }
-
-        function showMessage(text, backgroundColor = '#ff0000') {
-            message.css('background-color', backgroundColor);
-            message.find('p').text(text);
-            setTimeout(() =>  message.removeClass('message_change'), 2000);
-            message.addClass('message_change');
-        }
-    });
-    </script>
+    <script src="front-end/styles/script.js"></script>   <!-- Pagina Dinamica -->
+    <!-- <script src="/styles/script2.js"></script>  Solicitudes al servidor -->
+    <script src="front-end/styles/script3.js"></script>  <!-- Funcionamiento sin el servidor -->
 </body>
 </html>
